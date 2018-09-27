@@ -12,6 +12,28 @@ jugador = true
 ganador = false
 turno = 1
 
+def quien_gana (tablero)
+        if tablero[0][0] == tablero[0][1] && tablero[0][1] == tablero[0][2]
+                return true
+        elsif tablero[1][0] == tablero[1][1] && tablero[1][1] == tablero[1][2]
+                return true
+        elsif tablero[2][0] == tablero[2][1] && tablero[2][1] == tablero[2][2]
+                return true
+        elsif tablero[0][0] == tablero[1][0] && tablero[1][0] == tablero[2][0]
+                return true
+        elsif tablero[0][1] == tablero[1][1] && tablero[1][1] == tablero[2][1]
+                return true
+        elsif tablero[0][2] == tablero[1][2] && tablero[1][2] == tablero[2][2]
+                return true
+        elsif tablero[0][0] == tablero[1][1] && tablero[1][1] == tablero[2][2]
+                return true
+        elsif tablero[2][0] == tablero[1][1] && tablero[1][1] == tablero[0][2]
+                return true
+        else
+                return false
+        end
+end
+
 # Inicia el juego
 while ganador == false   && turno < 10
 
@@ -33,15 +55,14 @@ while ganador == false   && turno < 10
         when 6 then tablero [1][2] = jugador
         when 7 then tablero [2][0] = jugador
         when 8 then tablero [2][1] = jugador
-        when 9 then tablero [2][2] = jugador
+        when 9 then tablero [2][2] = jugador                                
         end    
 
-
-        quien_gana()
+        ganador = quien_gana(tablero)
 
         if jugador == "x"
                 jugador = false
-        elsif jugador == "O"
+        else jugador == "O"
                 jugador = true
         end
 
@@ -56,19 +77,8 @@ end
 if ganador == false
         puts "no hay ganador, es un empate"
 else
-        puts "Ganan las #{jugador}"
+        puts jugador ? "Ganan las O" : "Ganan las X"
 end
 
 
-def quien_gana ()
-        if tablero[0][0] && tablero[0][1] && tablero[0][2] == jugador
-        elsif tablero[1][0] && tablero[1][1] && tablero[1][2] == jugador
-        elsif tablero[2][0] && tablero[2][1] && tablero[2][2] == jugador
-        elsif tablero[0][0] && tablero[1][0] && tablero[2][0] == jugador
-        elsif tablero[0][1] && tablero[1][1] && tablero[2][1] == jugador
-        elsif tablero[0][2] && tablero[1][2] && tablero[2][2] == jugador
-        elsif tablero[0][0] && tablero[1][1] && tablero[2][2] == jugador
-        elsif tablero[2][0] && tablero[1][1] && tablero[0][2] == jugador
-        end
-        return ganador = true
-end
+
