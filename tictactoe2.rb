@@ -12,7 +12,7 @@ jugador = true
 ganador = false
 turno = 1
 
-def quien_gana (tablero)
+def quien_gana (tablero) # Aquí se define un ganador
         if tablero[0][0] == tablero[0][1] && tablero[0][1] == tablero[0][2]
                 return true
         elsif tablero[1][0] == tablero[1][1] && tablero[1][1] == tablero[1][2]
